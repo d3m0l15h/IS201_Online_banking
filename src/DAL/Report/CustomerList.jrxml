@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9c5cfe77-88ec-4c95-aeb4-8ff0e821accf">
+	<property name="ireport.zoom" value="1.2100000000000006"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="76"/>
+	<parameter name="employeeName" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT CUSTOMER_ID, FIRST_NAME || ' ' || LAST_NAME FULL_NAME, GENDER, DATE_OF_BIRTH, ADDRESS, PHONE_NUMBER, ID_CARD, REVENUE
+FROM CUSTOMER]]>
+	</queryString>
+	<field name="CUSTOMER_ID" class="java.math.BigDecimal"/>
+	<field name="FULL_NAME" class="java.lang.String"/>
+	<field name="GENDER" class="java.lang.String"/>
+	<field name="DATE_OF_BIRTH" class="java.sql.Timestamp"/>
+	<field name="ADDRESS" class="java.lang.String"/>
+	<field name="PHONE_NUMBER" class="java.lang.String"/>
+	<field name="ID_CARD" class="java.math.BigDecimal"/>
+	<field name="REVENUE" class="java.math.BigDecimal"/>
+	<variable name="CUSTOMER_ID_1" class="java.lang.Integer" calculation="DistinctCount">
+		<variableExpression><![CDATA[$F{CUSTOMER_ID}]]></variableExpression>
+	</variable>
+	<title>
+		<band height="221" splitType="Stretch">
+			<staticText>
+				<reportElement x="133" y="118" width="545" height="40" uuid="aa3107f6-4f81-4102-bc53-357986672a45"/>
+				<textElement textAlignment="Center">
+					<font fontName="Serif" size="18" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[BÁO CÁO THÔNG TIN VÀ DOANH THU KHÁCH HÀNG]]></text>
+			</staticText>
+			<line>
+				<reportElement x="1" y="100" width="802" height="1" uuid="2cd0fec1-b5dd-4745-8325-26bdcc233bc4"/>
+			</line>
+			<line>
+				<reportElement x="1" y="96" width="802" height="1" uuid="b3a0f01c-6bd6-4bc2-8095-8048b425adb3"/>
+			</line>
+			<staticText>
+				<reportElement x="4" y="32" width="566" height="20" uuid="cee8d2d3-8383-4f4f-be75-19ec0e531c59"/>
+				<textElement>
+					<font fontName="Serif" size="14" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Số 53-55, Đường Võ Thị Sáu, Phường Quyết Thắng, Thành Phố Biên Hòa, Tỉnh Đồng Nai.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="4" y="52" width="566" height="20" uuid="a679e92d-20b5-4eba-b557-93f757bfa6dc"/>
+				<textElement>
+					<font fontName="Serif" size="14" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Tel: 04-8243524/8245716]]></text>
+			</staticText>
+			<image>
+				<reportElement x="638" y="23" width="282" height="67" uuid="73fe88ed-38b7-4941-8ea4-2425040a295e"/>
+				<imageExpression><![CDATA["C:\\Users\\ACER\\Desktop\\no-image-news.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="4" y="12" width="398" height="20" uuid="d3ec48fc-a257-4e72-822d-f170136e75d2"/>
+				<textElement>
+					<font fontName="Serif" size="14" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[NGÂN HÀNG TMCP NGOẠI THƯƠNG VIỆT NAM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="8" y="167" width="125" height="24" uuid="97fe45cd-b9f3-45d8-bcfd-006db3bcab1c"/>
+				<textElement>
+					<font fontName="Serif" size="14" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Ngày lập báo cáo:]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="133" y="167" width="136" height="24" uuid="409482ac-18c0-472f-9a93-e29caadf382d"/>
+				<textElement>
+					<font fontName="Serif" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="8" y="194" width="125" height="24" uuid="bcf15c54-b394-4371-814b-e769a9dcc34f"/>
+				<textElement>
+					<font fontName="Serif" size="14" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Người lập báo cáo:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="133" y="194" width="166" height="24" uuid="c987cf8c-2be5-4147-8f7a-c4a904866085"/>
+				<textElement>
+					<font fontName="Serif" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{employeeName}.toUpperCase()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="52" splitType="Stretch">
+			<staticText>
+				<reportElement x="718" y="28" width="72" height="20" uuid="d6a1d448-40d5-4400-9599-159c408a2d9d"/>
+				<textElement textAlignment="Center">
+					<font fontName="Serif" size="11" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[(Revenue)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="702" y="10" width="101" height="20" uuid="a1bcd43a-d6f4-4099-a916-024838f22af6"/>
+				<textElement textAlignment="Center">
+					<font fontName="Serif" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tổng doanh thu]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="93" y="28" width="112" height="20" uuid="2ebfd6a3-9125-4d0b-b8ca-885e99b67f64"/>
+				<textElement textAlignment="Center">
+					<font fontName="Serif" size="11" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[(Customer name)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="93" y="10" width="112" height="20" uuid="9d106c82-cd17-45a8-9f13-5b76535ddbc9"/>
+				<textElement textAlignment="Center">
+					<font fontName="Serif" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tên khách hàng]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="219" y="10" width="74" height="20" uuid="b29e6555-a4d2-4dff-9757-faba34cf852a"/>
+				<textElement textAlignment="Center">
+					<font fontName="Serif" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Giới tính]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="299" y="10" width="88" height="20" uuid="f69d5e78-bf5f-46de-9d08-7ad1b37e4c6d"/>
+				<textElement textAlignment="Center">
+					<font fontName="Serif" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CMND]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="219" y="30" width="74" height="20" uuid="f9005437-b47c-4557-bb92-e2364cc4fbd8"/>
+				<textElement textAlignment="Center">
+					<font fontName="Serif" size="11" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[(Gender)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="395" y="30" width="100" height="20" uuid="c9bc2608-56ab-4cf8-8573-9168daa8776e"/>
+				<textElement textAlignment="Center">
+					<font fontName="Serif" size="11" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[(Phone No.)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="28" width="84" height="20" uuid="526031e3-3716-4a5e-b171-73bb70a6bff1"/>
+				<textElement textAlignment="Center">
+					<font fontName="Serif" size="11" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[(Customer ID)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="395" y="10" width="100" height="20" uuid="ed0a827f-4e94-4e92-ac1e-fd9edc07d87c"/>
+				<textElement textAlignment="Center">
+					<font fontName="Serif" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Số điện thoại]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="10" width="84" height="20" uuid="aa5f393b-ebff-432a-b35a-dcdff86daf71"/>
+				<textElement textAlignment="Center">
+					<font fontName="Serif" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Mã KH]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="299" y="30" width="88" height="20" uuid="deb3d879-df25-43cb-9a57-9456f31e6c3e"/>
+				<textElement textAlignment="Center">
+					<font fontName="Serif" size="11" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[(ID Card)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="504" y="10" width="199" height="20" uuid="45b1c639-9e85-4d0c-ba3d-bf35af6c072b"/>
+				<textElement textAlignment="Center">
+					<font fontName="Serif" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Địa chỉ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="504" y="28" width="199" height="20" uuid="8420cc13-476d-49c2-a563-28241ef5fc3b"/>
+				<textElement textAlignment="Center">
+					<font fontName="Serif" size="11" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[(Address)]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="8" width="802" height="1" uuid="2827fca9-b16a-420c-9107-a4f5fe8dad90"/>
+			</line>
+			<line>
+				<reportElement x="0" y="47" width="802" height="1" uuid="151ae50d-5538-4461-b943-00645430bb11"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="32" splitType="Stretch">
+			<textField pattern="#,##0">
+				<reportElement x="718" y="5" width="72" height="20" uuid="fcdbd4be-4800-4b4f-99df-2be1c083c119"/>
+				<textElement textAlignment="Center">
+					<font fontName="Serif" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{REVENUE}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="-1" y="28" width="802" height="1" uuid="79d76923-67fa-4358-b2f0-6b1293cdf7b4"/>
+			</line>
+			<textField>
+				<reportElement x="299" y="5" width="88" height="20" uuid="ec6c905f-ff3a-494e-b9be-6b83e9d9bf24"/>
+				<textElement textAlignment="Center">
+					<font fontName="Serif" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ID_CARD}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="5" y="5" width="81" height="20" uuid="012aecc1-bd4e-44da-853f-b9abde3c726b"/>
+				<textElement textAlignment="Center">
+					<font fontName="Serif" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CUSTOMER_ID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="219" y="5" width="74" height="20" uuid="bf98ad05-e73a-497c-843e-e5f8d78bfd1a"/>
+				<textElement textAlignment="Center">
+					<font fontName="Serif" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{GENDER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="503" y="5" width="210" height="20" uuid="3757e1ca-ad6b-4a59-ba2a-1d2e2cabbd00"/>
+				<textElement>
+					<font fontName="Serif" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ADDRESS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="93" y="5" width="112" height="20" uuid="fd65a073-33c8-4306-9a38-42396cff9e45"/>
+				<textElement textAlignment="Center">
+					<font fontName="Serif" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{FULL_NAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="395" y="5" width="100" height="20" uuid="9f4eccc4-d4aa-4ec2-a09a-878a6a09e3fc"/>
+				<textElement textAlignment="Center">
+					<font fontName="Serif" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PHONE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="50">
+			<textField>
+				<reportElement x="1" y="30" width="800" height="20" uuid="6c9dcd0d-b906-4db4-9324-986e6d42259b"/>
+				<textElement textAlignment="Right">
+					<font fontName="Serif" size="14" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Trang " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="40" splitType="Stretch">
+			<staticText>
+				<reportElement x="520" y="19" width="182" height="20" uuid="4795e129-25d7-412f-9b7a-de2b2f8c8919"/>
+				<textElement>
+					<font fontName="Serif" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tổng số khách hàng hiện tại:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="701" y="20" width="100" height="20" uuid="b2fad304-7f81-4c91-98b7-35037ec0dcc9"/>
+				<textElement>
+					<font fontName="Serif" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{CUSTOMER_ID_1}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

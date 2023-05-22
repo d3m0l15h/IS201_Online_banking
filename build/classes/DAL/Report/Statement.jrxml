@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isFloatColumnFooter="true" uuid="fa403466-1626-45fa-a76c-65fae0ef5015">
+	<property name="ireport.zoom" value="1.46410000000005"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="456"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($V{REPORT_COUNT}.intValue()%2==0)]]></conditionExpression>
+			<style backcolor="#EFF7FF"/>
+		</conditionalStyle>
+	</style>
+	<subDataset name="Table Dataset 1" uuid="612368cd-3968-4617-b831-c158de26eb2b">
+		<parameter name="accountId" class="java.lang.String"/>
+		<queryString>
+			<![CDATA[SELECT TRANSACTION_DATE, COUNT(TRANSACTION_ID)
+FROM TRANSACTION
+GROUP BY TRANSACTION_dATE]]>
+		</queryString>
+		<field name="TRANSACTION_DATE" class="java.sql.Timestamp"/>
+		<field name="COUNT(TRANSACTION_ID)" class="java.math.BigDecimal"/>
+	</subDataset>
+	<subDataset name="Table Dataset 2" uuid="602f7d8d-63a3-44bc-a4d6-58718b139de4">
+		<parameter name="accountId" class="java.lang.String"/>
+		<queryString>
+			<![CDATA[SELECT NAME, COUNT(TRANSACTION_ID)
+FROM TRANSACTION T JOIN TRANSACTION_TYPE TT  ON  T.TRANSACTION_TYPE_ID = TT.TRANSACTION_TYPE_ID
+WHERE ACCOUNT_ID = $P{accountId}
+GROUP BY NAME]]>
+		</queryString>
+		<field name="NAME" class="java.lang.String"/>
+		<field name="COUNT(TRANSACTION_ID)" class="java.math.BigDecimal"/>
+	</subDataset>
+	<subDataset name="Table Dataset 3" uuid="970a6b06-2b72-4823-851a-2f96fa9db265">
+		<queryString>
+			<![CDATA[SELECT TO_DATE(TRANSACTION_DATE, 'dd/MM/yyyy'), SUM(TOTAL_TRANSACTION_AMOUNT)
+FROM TRANSACTION
+GROUP BY TO_DATE(TRANSACTION_DATE, 'dd/MM/yyyy')]]>
+		</queryString>
+		<field name="TO_DATE(TRANSACTION_DATE,&apos;DD/MM/YYYY&apos;)" class="java.sql.Timestamp"/>
+		<field name="SUM(TOTAL_TRANSACTION_AMOUNT)" class="java.math.BigDecimal"/>
+	</subDataset>
+	<parameter name="fromDate" class="java.lang.String"/>
+	<parameter name="toDate" class="java.lang.String"/>
+	<parameter name="accountId" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select T.TRANSACTION_ID, T.TRANSACTION_DATE, TP.TRANSACTION_TYPE_ID, T.TOTAL_TRANSACTION_AMOUNT, TP.NAME, TP.FEE, A.ACCOUNT_ID, C. ADDRESS, TP.NAME, A.CURRENT_BALANCE , C.FIRST_NAME || ' ' || C.LAST_NAME FULL_NAME
+from ((TRANSACTION T JOIN TRANSACTION_TYPE TP ON T.TRANSACTION_TYPE_ID = TP.TRANSACTION_TYPE_ID)
+            JOIN ACCOUNT A ON A.ACCOUNT_ID = T.ACCOUNT_ID)
+                JOIN CUSTOMER C ON C.CUSTOMER_ID = A.CUSTOMER_ID
+WHERE ACCOUNT_TYPE_ID = 'PA' AND t.ACCOUNT_ID = $P{accountId}
+AND TRANSACTION_DATE >= TO_DATE($P{fromDate}) AND TRANSACTION_DATE <=  TO_DATE($P{toDate})
+ORDER BY T.transaction_id DESC]]>
+	</queryString>
+	<field name="TRANSACTION_ID" class="java.math.BigDecimal"/>
+	<field name="TRANSACTION_DATE" class="java.sql.Timestamp"/>
+	<field name="TRANSACTION_TYPE_ID" class="java.lang.String"/>
+	<field name="TOTAL_TRANSACTION_AMOUNT" class="java.math.BigDecimal"/>
+	<field name="NAME" class="java.lang.String"/>
+	<field name="FEE" class="java.math.BigDecimal"/>
+	<field name="ACCOUNT_ID" class="java.math.BigDecimal"/>
+	<field name="ADDRESS" class="java.lang.String"/>
+	<field name="CURRENT_BALANCE" class="java.math.BigDecimal"/>
+	<field name="FULL_NAME" class="java.lang.String"/>
+	<variable name="variable1" class="java.lang.String"/>
+	<title>
+		<band height="324" splitType="Stretch">
+			<staticText>
+				<reportElement x="319" y="0" width="203" height="28" uuid="9c556c09-7613-4757-bd94-2ef53cd435d6"/>
+				<textElement textAlignment="Center">
+					<font fontName="Serif" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SAO KÊ TÀI KHOẢN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="293" width="70" height="20" uuid="28546c78-9e5c-4064-9714-e82b043e985c"/>
+				<textElement>
+					<font fontName="Serif" size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Từ (From):]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="184" width="113" height="20" uuid="4dee9d9a-b87e-4000-b5fa-f422b4625faf"/>
+				<textElement>
+					<font fontName="Serif" size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Địa chỉ/Address:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="359" y="28" width="129" height="20" uuid="c5c5edf9-d6af-4908-a602-0ade158600e5"/>
+				<textElement>
+					<font isItalic="true"/>
+				</textElement>
+				<text><![CDATA[ACCOUNT STATEMENT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="212" y="257" width="40" height="20" uuid="c3cf9382-9502-44f2-b14b-627933ab8632"/>
+				<textElement>
+					<font fontName="Serif" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[VND]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="300" y="71" width="143" height="20" uuid="8cf5cc4d-b01c-45c1-b920-98bad509c3c8"/>
+				<textElement>
+					<font fontName="Serif" size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Ngày thực hiện/(date):]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="257" width="123" height="20" uuid="e82f71ba-5aa3-4f55-b8f3-72041cfc0e3d"/>
+				<textElement>
+					<font fontName="Serif" size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Loại tiền/Currency:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="217" width="192" height="20" uuid="ac3272ed-4c04-491a-b7e6-fdcf8784ba45"/>
+				<textElement>
+					<font fontName="Serif" size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Số tài khoản/Account number:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="144" width="192" height="20" uuid="9907a089-e189-4c60-b2aa-daa247d27e20"/>
+				<textElement>
+					<font fontName="Serif" size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Chủ tài khoản/Account name:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="212" y="293" width="63" height="20" uuid="9234a032-ba67-4070-aa84-57cf14c4566b"/>
+				<textElement>
+					<font fontName="Serif" size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Đến (To):]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="211" y="144" width="167" height="20" uuid="c6e070c3-017f-449e-9e03-0a1a3bcbf1a9"/>
+				<textElement>
+					<font fontName="Serif" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{FULL_NAME}.toUpperCase()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="212" y="184" width="298" height="20" uuid="8f489055-0df8-4f34-9243-2e2062ae4fc9"/>
+				<textElement>
+					<font fontName="Serif" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ADDRESS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="211" y="217" width="180" height="20" uuid="e40910ac-0849-4952-81cc-41c90636bd3c"/>
+				<textElement>
+					<font fontName="Serif" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ACCOUNT_ID}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="-23" y="0" width="443" height="90" uuid="3dd32035-0da7-42fc-8b57-66e8057d12ab"/>
+				<imageExpression><![CDATA["C:\\Users\\ACER\\Desktop\\no-image-news.jpg"]]></imageExpression>
+			</image>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="431" y="71" width="124" height="20" uuid="dbc3fc7d-02ca-41b9-a15c-8eb485139ebb"/>
+				<textElement>
+					<font fontName="Serif" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="h.mm a">
+				<reportElement x="433" y="95" width="122" height="20" uuid="c9375678-f9bc-403f-8612-e545cd8e59f6"/>
+				<textElement>
+					<font fontName="Serif" size="14" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="300" y="95" width="131" height="20" uuid="146f1a11-7a37-41aa-a711-eb6b7c142296"/>
+				<textElement>
+					<font fontName="Serif" size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Giờ in/(print time):]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="70" y="293" width="100" height="20" uuid="8b22de8c-4d21-487d-b0b0-ed0edec5c95c"/>
+				<textElement>
+					<font fontName="Serif" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fromDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="275" y="293" width="100" height="20" uuid="47138866-1394-4f2d-bc47-5fd97ab72693"/>
+				<textElement>
+					<font fontName="Serif" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{toDate}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="50" splitType="Stretch">
+			<staticText>
+				<reportElement x="7" y="8" width="70" height="20" uuid="84ec521e-f271-4ce4-a0b4-5c0afeb63655"/>
+				<textElement>
+					<font fontName="Serif" size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Ngày GD]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="0" width="555" height="1" uuid="3ad3ad38-171a-44da-8fe5-c5b220f4ec4f"/>
+			</line>
+			<line>
+				<reportElement x="0" y="0" width="1" height="50" uuid="24836be8-e4ef-46f1-b617-702977320ef4"/>
+			</line>
+			<staticText>
+				<reportElement x="7" y="24" width="70" height="20" uuid="1d609ff1-2c26-4e2b-bf21-28d84c0af539"/>
+				<textElement>
+					<font fontName="Serif" size="12" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Trans. Date]]></text>
+			</staticText>
+			<line>
+				<reportElement x="139" y="1" width="1" height="49" uuid="307a1782-85e4-47e1-8ace-2da5c6082338"/>
+			</line>
+			<staticText>
+				<reportElement x="144" y="8" width="108" height="20" uuid="daa1823e-f955-4ede-a13c-ab4d318940f3"/>
+				<textElement textAlignment="Center">
+					<font fontName="Serif" size="14"/>
+				</textElement>
+				<text><![CDATA[Số tiền giao dịch]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="144" y="24" width="108" height="20" uuid="6dcb0e25-97fa-47b0-9adb-e7c418fdb0f4"/>
+				<textElement>
+					<font fontName="Serif" size="12" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Total Trans. Amount]]></text>
+			</staticText>
+			<line>
+				<reportElement x="264" y="1" width="1" height="49" uuid="728d7f96-7209-4833-ae16-a5a90d555cbc"/>
+			</line>
+			<staticText>
+				<reportElement x="348" y="8" width="128" height="20" uuid="6ed432b9-fcc4-49ca-b6fd-7a79fe545735"/>
+				<textElement textAlignment="Center">
+					<font fontName="Serif" size="14"/>
+				</textElement>
+				<text><![CDATA[Nội dung]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="359" y="24" width="108" height="20" uuid="e68042ca-a074-4980-bd85-90b86cc5ab7d"/>
+				<textElement textAlignment="Center">
+					<font fontName="Serif" size="12" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Content]]></text>
+			</staticText>
+			<line>
+				<reportElement x="554" y="1" width="1" height="49" uuid="a49c6997-d1e4-4aad-8f88-9a10f5ad0509"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="32" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy h.mm a">
+				<reportElement x="7" y="5" width="132" height="20" uuid="bb15215c-b82f-4d51-aa6d-bc0044d40ed9"/>
+				<textElement>
+					<font fontName="Serif" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TRANSACTION_DATE}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="0" width="555" height="1" uuid="547eb990-4a2f-4208-b2d9-e40e6a71df3b"/>
+			</line>
+			<line>
+				<reportElement x="0" y="0" width="1" height="32" uuid="31cbfbd1-758c-488a-9477-3b2baf34a597"/>
+			</line>
+			<line>
+				<reportElement x="139" y="0" width="1" height="32" uuid="eb48e48f-8fa2-46f3-b908-ba593f36575a"/>
+			</line>
+			<textField pattern="#,##0">
+				<reportElement x="155" y="5" width="70" height="20" uuid="286c3ec1-f4a7-45c2-b24c-be9e0f8793c7"/>
+				<textElement>
+					<font fontName="Serif" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TOTAL_TRANSACTION_AMOUNT}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="554" y="0" width="1" height="32" uuid="8c9693a7-7cef-45b2-9432-b9a4cf565295"/>
+			</line>
+			<textField>
+				<reportElement x="270" y="5" width="279" height="20" uuid="e57ea996-909a-4f60-ac16-c3b22e37f972"/>
+				<textElement>
+					<font fontName="Serif" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NAME}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="225" y="5" width="35" height="20" uuid="aef57df2-d5a3-48c7-9bca-27f23110a760"/>
+				<textElement>
+					<font fontName="Serif" size="14"/>
+				</textElement>
+				<text><![CDATA[VND]]></text>
+			</staticText>
+			<line>
+				<reportElement x="264" y="0" width="1" height="32" uuid="ff44b030-6673-4c65-a1b9-37108c960981"/>
+			</line>
+			<textField pattern="#,##0">
+				<reportElement x="144" y="5" width="16" height="20" uuid="bdddc4b0-fe87-4a87-9a6e-2bba430cb207"/>
+				<textElement>
+					<font fontName="Serif" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{TRANSACTION_TYPE_ID}.equals("NT01") || $F{TRANSACTION_TYPE_ID}.equals("TK02")) ? "+" : "-"]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="8">
+			<line>
+				<reportElement x="0" y="0" width="555" height="1" uuid="d4a335ea-350b-4372-8c41-05df3c144a7d"/>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="50">
+			<textField>
+				<reportElement x="144" y="30" width="413" height="20" uuid="6d5b83db-208e-4018-8261-77c3813842ed"/>
+				<textElement textAlignment="Right">
+					<font fontName="Serif" size="14" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Trang " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="395">
+			<staticText>
+				<reportElement x="326" y="7" width="74" height="20" uuid="ff0fc46a-b152-4c6f-a805-3c54671f88ff"/>
+				<textElement>
+					<font fontName="Serif" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Số dư cuối:]]></text>
+			</staticText>
+			<textField pattern="#,##0">
+				<reportElement x="400" y="7" width="98" height="20" uuid="38f40586-a5a9-401c-906a-f12b005e2c0d"/>
+				<textElement>
+					<font fontName="Serif" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CURRENT_BALANCE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="498" y="7" width="35" height="20" uuid="e4429cbb-04d0-4475-ab36-e85873c54e36"/>
+				<textElement>
+					<font fontName="Serif" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[VND]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="0" width="1" height="31" uuid="c51a03bb-67f6-4274-bcf6-ea86c17d9408"/>
+			</line>
+			<line>
+				<reportElement x="554" y="0" width="1" height="31" uuid="0a6c41ef-160c-46d7-b96e-cbece403cf8d"/>
+			</line>
+			<line>
+				<reportElement x="0" y="0" width="555" height="1" uuid="aac50f3a-4cb1-4db6-b64e-3d10f2b38919"/>
+			</line>
+			<line>
+				<reportElement x="1" y="30" width="553" height="1" uuid="3a589c4f-b97a-47d4-8324-8c3f93466624"/>
+			</line>
+			<staticText>
+				<reportElement x="11" y="42" width="480" height="20" uuid="21ef4321-f3b7-40e1-ab5b-68854864df17"/>
+				<textElement>
+					<font fontName="Serif" size="14" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Biểu đồ thống kê giao dịch của khác hàng theo mỗi loại giao dịch ]]></text>
+			</staticText>
+			<pieChart>
+				<chart>
+					<reportElement x="24" y="95" width="498" height="208" uuid="855a86f3-1952-45ad-b970-8e55e916d847"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<pieDataset>
+					<keyExpression><![CDATA[$F{NAME}]]></keyExpression>
+					<valueExpression><![CDATA[$F{TOTAL_TRANSACTION_AMOUNT}]]></valueExpression>
+					<labelExpression><![CDATA[$F{NAME}]]></labelExpression>
+				</pieDataset>
+				<piePlot>
+					<plot/>
+					<itemLabel/>
+				</piePlot>
+			</pieChart>
+			<staticText>
+				<reportElement x="54" y="362" width="444" height="32" uuid="2819277b-a94d-4508-9f4b-8e950edc4aaf"/>
+				<textElement textAlignment="Center">
+					<font fontName="Serif" size="16" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Thank you for banking with Vietcombank!]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="54" y="330" width="444" height="32" uuid="76267ea0-ce96-4ffb-9745-062e75157f45"/>
+				<textElement textAlignment="Center">
+					<font fontName="Serif" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cảm ơn Quý khách đã sử dụng dịch vụ của Vietcombank!]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="11" y="62" width="389" height="20" uuid="91251ed2-8412-40c0-ba77-e5db69ff20d5"/>
+				<textElement>
+					<font fontName="Serif" size="14" isBold="false" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Từ ngày " + $P{fromDate} + " đến ngày " + $P{toDate}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>
