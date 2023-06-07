@@ -117,7 +117,7 @@ public class Procedure_DAL
     {
         try{
             Connection con = DBConnection.ConnectDb();
-            String strCall = "{call DELETE_CUSTOMER(?)}";
+            String strCall = "DELETE FROM customer WHERE customer_ID = ?";
             CallableStatement caSt = con.prepareCall(strCall);
             caSt.setLong(1, ct.getId());
            

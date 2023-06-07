@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="25bbb469-f999-4775-bfad-c710d48547f4">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SupplierReport" language="groovy" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="25bbb469-f999-4775-bfad-c710d48547f4">
 	<property name="ireport.zoom" value="1.2100000000000006"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="48"/>
+	<property name="ireport.y" value="0"/>
 	<parameter name="employeeName" class="java.lang.String"/>
-	<queryString language="SQL">
+	<queryString>
 		<![CDATA[select * from supplier]]>
 	</queryString>
 	<field name="SUPPLIER_ID" class="java.math.BigDecimal"/>
@@ -34,8 +34,8 @@
 				<reportElement x="0" y="91" width="752" height="1" uuid="081fd3c4-9054-4f9c-b4bb-fef83c0569ff"/>
 			</line>
 			<image>
-				<reportElement x="587" y="20" width="282" height="67" uuid="32638fbf-ae15-488b-b931-3b3fec166f79"/>
-				<imageExpression><![CDATA["C:\\Users\\ACER\\Desktop\\no-image-news.jpg"]]></imageExpression>
+				<reportElement x="615" y="0" width="127" height="91" uuid="32638fbf-ae15-488b-b931-3b3fec166f79"/>
+				<imageExpression><![CDATA["D:\\Java\\PROJECT_OnlineBankingSystem\\src\\GUI\\Images\\admingui_PartnerManagement.png"]]></imageExpression>
 			</image>
 			<staticText>
 				<reportElement x="203" y="115" width="367" height="40" uuid="21ce0f89-fb24-464b-8b83-ef6962ed8d93"/>
@@ -87,7 +87,7 @@
 				<text><![CDATA[Người lập báo cáo:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="130" y="179" width="192" height="20" uuid="6a3fd1aa-4719-4c32-a73b-7ce849913d4b"/>
+				<reportElement x="130" y="179" width="204" height="20" uuid="6a3fd1aa-4719-4c32-a73b-7ce849913d4b"/>
 				<textElement>
 					<font fontName="Serif" size="14"/>
 				</textElement>
@@ -129,7 +129,7 @@
 				<text><![CDATA[Ngày ký hợp đồng]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="597" y="5" width="100" height="20" uuid="a86fb42a-81d0-4941-8203-f3ce3da1da24"/>
+				<reportElement x="652" y="5" width="100" height="20" uuid="a86fb42a-81d0-4941-8203-f3ce3da1da24"/>
 				<textElement textAlignment="Center">
 					<font fontName="Serif" size="14" isBold="true"/>
 				</textElement>
@@ -167,7 +167,7 @@
 				<text><![CDATA[(Contract signing date)]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="597" y="25" width="100" height="20" uuid="41d8a1b2-ac44-40fd-a0ea-03178e3cece8"/>
+				<reportElement x="652" y="25" width="100" height="20" uuid="41d8a1b2-ac44-40fd-a0ea-03178e3cece8"/>
 				<textElement textAlignment="Center">
 					<font fontName="Serif" size="11" isBold="false" isItalic="true"/>
 				</textElement>
@@ -178,7 +178,7 @@
 	<detail>
 		<band height="41" splitType="Stretch">
 			<textField>
-				<reportElement x="3" y="6" width="107" height="20" uuid="03f840e7-6332-4cd2-adce-21e774c5b416"/>
+				<reportElement x="0" y="0" width="110" height="20" uuid="03f840e7-6332-4cd2-adce-21e774c5b416"/>
 				<textElement textAlignment="Center">
 					<font fontName="Serif" size="14"/>
 				</textElement>
@@ -206,7 +206,7 @@
 				<textFieldExpression><![CDATA[$F{CONTRACT_SIGNING_DATE}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="597" y="6" width="100" height="20" uuid="dc01bdbd-a275-497a-9ab7-20927ea3e568"/>
+				<reportElement x="652" y="6" width="100" height="20" uuid="dc01bdbd-a275-497a-9ab7-20927ea3e568"/>
 				<textElement textAlignment="Center">
 					<font fontName="Serif" size="14"/>
 				</textElement>

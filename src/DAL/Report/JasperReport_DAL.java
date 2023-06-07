@@ -22,7 +22,7 @@ import java.sql.*;
 
 public class JasperReport_DAL 
 {
-    private void showReport(String m_report_source, String m_sql_stmt, Map parametersMap) 
+    private void showReport(String m_report_source, String m_sql_stmt, Map<String,Object> parametersMap)
     {
         try {
             // Connect database
@@ -30,18 +30,20 @@ public class JasperReport_DAL
             // Chỉ định một báo cáo sẽ được tải lên
             InputStream is = getClass().getResourceAsStream(m_report_source);
             // Thực hiện truy vấn JRDesignQuery
+            JasperDesign jasperDesign = JRXmlLoader.load(is);
+            
+            
             JRDesignQuery jrDesignQuery = new JRDesignQuery();
             jrDesignQuery.setText(m_sql_stmt);
-            JasperDesign jasperDesign = JRXmlLoader.load(is);
             jasperDesign.setQuery(jrDesignQuery);
             // Biên dịch JasperReport
             JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
+            System.out.println("Before");
             JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parametersMap, con);
+            System.out.println("After");
             // Hiển thị report
             JasperViewer.viewReport(jasperPrint, false);
-        } 
-        catch (JRException e) 
-        {
+        } catch (JRException e) {
             System.out.println("Exception message " + e.getMessage());
         }
     }
@@ -72,7 +74,7 @@ public class JasperReport_DAL
     
     public void showCustomerList(Employee_DTO dtoEmployee) 
     {
-        Map parametersMap = new HashMap();
+        Map<String, Object> parametersMap = new HashMap<>();
         parametersMap.put("employeeName", dtoEmployee.getFirstName() + " " + dtoEmployee.getLastName());
         String m_report_source = "CustomerList.jrxml";
         String m_sql_stmt = "SELECT CUSTOMER_ID, FIRST_NAME || ' ' || LAST_NAME FULL_NAME, GENDER, DATE_OF_BIRTH, ADDRESS, PHONE_NUMBER, ID_CARD,REVENUE\n" +
@@ -83,7 +85,7 @@ public class JasperReport_DAL
     
     public void showSupplierList(Employee_DTO dtoAdmin) 
     {
-        Map parametersMap = new HashMap();
+        Map<String, Object> parametersMap = new HashMap<>();
         parametersMap.put("employeeName", dtoAdmin.getFirstName() + " " + dtoAdmin.getLastName());
         String m_report_source = "SupplierReport.jrxml";
         String m_sql_stmt = "SELECT * FROM SUPPLIER";

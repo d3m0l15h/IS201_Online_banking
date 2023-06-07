@@ -170,13 +170,13 @@ public class iTextPDF_DAL
         {
             PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("D:\\JAVA\\"+ filename + ".pdf"));
             document.open();
-            File filefontTieuDe = new File("C:\\Users\\ACER\\Downloads\\OnlineBankingSystem-SourceCode\\OnlineBankingSystemProject\\src\\DAL\\Report\\fonts\\vuArialBold.ttf");
+            File filefontTieuDe = new File("D:\\Java\\PROJECT_OnlineBankingSystem\\vuArialBold.ttf");
             BaseFont bfTieuDe = BaseFont.createFont(filefontTieuDe.getAbsolutePath(), BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
             Font fontTieuDe1 = new Font(bfTieuDe, 16);
             Font fontTieuDe2 = new Font(bfTieuDe, 13);
             Font fontTieuDe3 = new Font(bfTieuDe, 12);
 
-            File filefontNoiDung = new File("C:\\Users\\ACER\\Downloads\\OnlineBankingSystem-SourceCode\\OnlineBankingSystemProject\\src\\DAL\\Report\\fonts\\vuArial.ttf");
+            File filefontNoiDung = new File("D:\\Java\\PROJECT_OnlineBankingSystem\\vuArial.ttf");
             BaseFont bfNoiDung = BaseFont.createFont(filefontNoiDung.getAbsolutePath(), BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
             Font fontNoiDung1 = new Font(bfNoiDung, 13);
             Font fontNoiDung2 = new Font(bfNoiDung, 12);
@@ -194,7 +194,7 @@ public class iTextPDF_DAL
             prgSoDT.setIndentationLeft(0);
             document.add(prgSoDT);
 
-            Image logo = Image.getInstance("C:\\Users\\ACER\\Downloads\\OnlineBankingSystem-SourceCode\\OnlineBankingSystemProject\\src\\GUI\\Images\\Vietcombank-icon.jpg");
+            Image logo = Image.getInstance("D:\\Java\\PROJECT_OnlineBankingSystem\\src\\GUI\\Images\\icon_vie (Custom).png");
             logo.setAbsolutePosition(400, 750);
             logo.scaleAbsolute(150, 50);
             document.add(logo);
@@ -543,20 +543,20 @@ public class iTextPDF_DAL
         {
             PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("D:\\JAVA\\"+ filename + ".pdf"));
             document.open();
-            File filefontTieuDe = new File("C:\\Users\\ACER\\Downloads\\OnlineBankingSystem-SourceCode\\OnlineBankingSystemProject\\src\\DAL\\Report\\fonts\\vuArialBold.ttf");
+            File filefontTieuDe = new File("D:\\Java\\PROJECT_OnlineBankingSystem\\vuArialBold.ttf");
             BaseFont bfTieuDe = BaseFont.createFont(filefontTieuDe.getAbsolutePath(), BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
             Font fontTieuDe1 = new Font(bfTieuDe, 16);
             Font fontTieuDe2 = new Font(bfTieuDe, 13);
             Font fontTieuDe3 = new Font(bfTieuDe, 12);
             
 
-            File filefontNoiDung = new File("C:\\Users\\ACER\\Downloads\\OnlineBankingSystem-SourceCode\\OnlineBankingSystemProject\\src\\DAL\\Report\\fonts\\vuArial.ttf");
+            File filefontNoiDung = new File("D:\\Java\\PROJECT_OnlineBankingSystem\\vuArial.ttf");
             BaseFont bfNoiDung = BaseFont.createFont(filefontNoiDung.getAbsolutePath(), BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
             Font fontNoiDung1 = new Font(bfNoiDung, 13);
             Font fontNoiDung2 = new Font(bfNoiDung, 12);
             Font fontNoiDung3 = new Font(bfNoiDung, 11);
                         
-            Image logo = Image.getInstance("C:\\Users\\ACER\\Downloads\\OnlineBankingSystem-SourceCode\\OnlineBankingSystemProject\\src\\GUI\\Images\\Vietcombank-icon.jpg");
+            Image logo = Image.getInstance("D:\\Java\\PROJECT_OnlineBankingSystem\\src\\GUI\\Images\\icon_vie (Custom).png");
             logo.setAbsolutePosition(440, 750);
             logo.scaleAbsolute(150, 50);
             document.add(logo);
@@ -844,13 +844,13 @@ public class iTextPDF_DAL
         {
             PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("D:\\JAVA\\"+ filename + ".pdf"));
             document.open();
-            File filefontTieuDe = new File("C:\\Users\\ACER\\Downloads\\OnlineBankingSystem-SourceCode\\OnlineBankingSystemProject\\src\\DAL\\Report\\fonts\\vuArialBold.ttf");
+            File filefontTieuDe = new File("D:\\Java\\PROJECT_OnlineBankingSystem\\vuArialBold.ttf");
             BaseFont bfTieuDe = BaseFont.createFont(filefontTieuDe.getAbsolutePath(), BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
             Font fontTieuDe1 = new Font(bfTieuDe, 16);
             Font fontTieuDe2 = new Font(bfTieuDe, 13);
             Font fontTieuDe3 = new Font(bfTieuDe, 12);
 
-            File filefontNoiDung = new File("C:\\Users\\ACER\\Downloads\\OnlineBankingSystem-SourceCode\\OnlineBankingSystemProject\\src\\DAL\\Report\\fonts\\vuArial.ttf");
+            File filefontNoiDung = new File("D:\\Java\\PROJECT_OnlineBankingSystem\\vuArial.ttf");
             BaseFont bfNoiDung = BaseFont.createFont(filefontNoiDung.getAbsolutePath(), BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
             Font fontNoiDung1 = new Font(bfNoiDung, 13);
             Font fontNoiDung2 = new Font(bfNoiDung, 12);
@@ -868,7 +868,7 @@ public class iTextPDF_DAL
             prgSoDT.setIndentationLeft(0);
             document.add(prgSoDT);
             
-            Image logo = Image.getInstance("C:\\Users\\ACER\\Downloads\\OnlineBankingSystem-SourceCode\\OnlineBankingSystemProject\\src\\GUI\\Images\\Vietcombank-icon.jpg");
+            Image logo = Image.getInstance("D:\\Java\\PROJECT_OnlineBankingSystem\\src\\GUI\\Images\\icon_vie (Custom).png");
             logo.setAbsolutePosition(400, 750);
             logo.scaleAbsolute(150, 50);
             document.add(logo);
@@ -1171,7 +1171,7 @@ public class iTextPDF_DAL
 			 // Create a pdfStamper based on a pdfreader. Used to generate a new pdf.
 			stamper = new PdfStamper(reader, new FileOutputStream(outFilePath));
 			 // This font comes with itext-asian.jar, so there is no need to consider the operating system environment.
-                        File filefontNoiDung = new File("C:\\Users\\ACER\\Downloads\\OnlineBankingSystem-SourceCode\\OnlineBankingSystemProject\\src\\DAL\\Report\\fonts\\vuArial.ttf");
+                        File filefontNoiDung = new File("D:\\Java\\PROJECT_OnlineBankingSystem\\vuArial.ttf");
 			BaseFont bf = BaseFont.createFont(filefontNoiDung.getAbsolutePath(), BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
 			 // baseFont does not support font style settings. However, font font requires the operating system to support this font will bring porting problems.
 			Font font = new Font(bf, 10);
