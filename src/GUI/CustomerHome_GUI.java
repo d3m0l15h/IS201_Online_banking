@@ -28,7 +28,7 @@ public class CustomerHome_GUI extends javax.swing.JFrame
         setVisible(true); // Hiển thị giao diện
         
         // Show customer's name
-        lblHelloCustomer.setText("         Hello " + dtoCustomer.getFirstName() + " " + dtoCustomer.getLastName());
+        lblHelloCustomer.setText(dtoCustomer.getFirstName() + " " + dtoCustomer.getLastName());
     }
     class JPanelGradient extends JPanel{
         @Override

@@ -577,6 +577,11 @@ public class CustomerManagement_GUI extends javax.swing.JFrame
         jPanel3.add(lblFirstName_UpdateCustomer, new org.netbeans.lib.awtextra.AbsoluteConstraints(57, 195, 110, 30));
 
         txtFirstName_UpdateCustomer.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtFirstName_UpdateCustomer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFirstName_UpdateCustomerActionPerformed(evt);
+            }
+        });
         jPanel3.add(txtFirstName_UpdateCustomer, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 193, 220, 32));
 
         cbbID_Update.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
@@ -680,7 +685,7 @@ public class CustomerManagement_GUI extends javax.swing.JFrame
                 int ret = JOptionPane.showConfirmDialog(null, "Are you sure to update this customer information?", "Confirm", JOptionPane.YES_NO_OPTION);
                 if(ret == JOptionPane.YES_OPTION) 
                 {
-                    String cus_id  = cbbID_Update.getSelectedItem().toString().substring(0, 1); 
+                    String cus_id  = cbbID_Update.getSelectedItem().toString().replaceAll("[^0-9]", "");
                     Customer_DTO ct = new Customer_DTO(Integer.parseInt(cus_id), txtFirstName_UpdateCustomer.getText(), txtLastName_UpdateCustomer.getText(), cbbUpdateGender.getSelectedItem().toString(), dcDateOfBirth_UpdateCustomer.getDate(), txtUpdateAddress.getText(), txtUpdatePhoneNumber.getText(), txtUpdateIDCard.getText());
                     if(busCustomerManagment.update(ct))
                     {
@@ -789,7 +794,7 @@ public class CustomerManagement_GUI extends javax.swing.JFrame
                 clearForm();
             }
             else {
-                String cus_id  = cbbID_Update.getSelectedItem().toString().substring(0, 1);
+                String cus_id  = cbbID_Update.getSelectedItem().toString().replaceAll("[^0-9]", "");
                 dtoCustomer = busCustomerManagment.getInformation(Integer.parseInt(cus_id));
                 if(dtoCustomer == null)
                 {
@@ -819,6 +824,10 @@ public class CustomerManagement_GUI extends javax.swing.JFrame
         // TODO add your handling code here:
         txtAddress.requestFocus();
     }//GEN-LAST:event_jDateChooser1PropertyChange
+
+    private void txtFirstName_UpdateCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFirstName_UpdateCustomerActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFirstName_UpdateCustomerActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
