@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9c5cfe77-88ec-4c95-aeb4-8ff0e821accf">
 	<property name="ireport.zoom" value="1.2100000000000006"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="76"/>
+	<property name="ireport.y" value="0"/>
 	<parameter name="employeeName" class="java.lang.String"/>
 	<queryString language="SQL">
 		<![CDATA[SELECT CUSTOMER_ID, FIRST_NAME || ' ' || LAST_NAME FULL_NAME, GENDER, DATE_OF_BIRTH, ADDRESS, PHONE_NUMBER, ID_CARD, REVENUE
@@ -50,7 +50,7 @@ FROM CUSTOMER]]>
 			</staticText>
 			<image>
 				<reportElement x="638" y="23" width="282" height="67" uuid="73fe88ed-38b7-4941-8ea4-2425040a295e"/>
-				<imageExpression><![CDATA["C:\\Users\\ACER\\Desktop\\no-image-news.jpg"]]></imageExpression>
+				<imageExpression><![CDATA["D:\\Java\\PROJECT_OnlineBankingSystem\\src\\GUI\\Images\\CustomerManagement_ViewCustomer.png"]]></imageExpression>
 			</image>
 			<staticText>
 				<reportElement x="4" y="12" width="398" height="20" uuid="d3ec48fc-a257-4e72-822d-f170136e75d2"/>

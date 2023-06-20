@@ -20,10 +20,6 @@ FROM ((CUSTOMER C JOIN BILL B ON C.CUSTOMER_ID = B.CUSTOMER_ID)
 	<field name="SERVICE_TYPE" class="java.lang.String"/>
 	<title>
 		<band height="186" splitType="Stretch">
-			<image>
-				<reportElement x="390" y="19" width="194" height="68" uuid="f347276e-4308-4edc-839f-55588efd3ea8"/>
-				<imageExpression><![CDATA["C:\\Users\\ACER\\Desktop\\no-image-news.jpg"]]></imageExpression>
-			</image>
 			<staticText>
 				<reportElement x="242" y="152" width="100" height="20" uuid="191ae465-57ab-4660-9036-322694aafed1"/>
 				<textElement>

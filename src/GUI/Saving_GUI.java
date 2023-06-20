@@ -290,7 +290,7 @@ public class Saving_GUI extends javax.swing.JFrame
         OpenOnlineSavings.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnHome_OpenAccount.setBackground(new java.awt.Color(59, 196, 116));
-        btnHome_OpenAccount.setForeground(new java.awt.Color(59, 196, 116));
+        btnHome_OpenAccount.setForeground(new java.awt.Color(255, 255, 255));
         btnHome_OpenAccount.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Images/Home.png"))); // NOI18N
         btnHome_OpenAccount.setText("Home");
         btnHome_OpenAccount.setToolTipText("");

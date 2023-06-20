@@ -349,7 +349,7 @@ public class Payment_GUI extends javax.swing.JFrame
         jPanel1.add(lblSupplierName, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, -1, -1));
 
         cboYear.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        cboYear.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2019", "2020", "2021" }));
+        cboYear.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2019", "2020", "2021", "2022", "2023" }));
         cboYear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboYearActionPerformed(evt);
