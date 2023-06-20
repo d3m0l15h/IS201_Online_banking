@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isFloatColumnFooter="true" uuid="fa403466-1626-45fa-a76c-65fae0ef5015">
 	<property name="ireport.zoom" value="1.210000000000041"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="514"/>
+	<property name="ireport.y" value="0"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -197,10 +197,6 @@ WHERE ACCOUNT_TYPE_ID = 'PA']]>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ACCOUNT_ID}]]></textFieldExpression>
 			</textField>
-			<image>
-				<reportElement x="-23" y="0" width="443" height="90" uuid="3dd32035-0da7-42fc-8b57-66e8057d12ab"/>
-				<imageExpression><![CDATA["C:\\Users\\ACER\\Desktop\\no-image-news.jpg"]]></imageExpression>
-			</image>
 			<textField pattern="dd/MM/yyyy">
 				<reportElement x="431" y="71" width="124" height="20" uuid="dbc3fc7d-02ca-41b9-a15c-8eb485139ebb"/>
 				<textElement>

@@ -75,6 +75,7 @@ public class SupplierManagement_GUI extends javax.swing.JFrame
 
     public void clearForm()
     {
+        btnAdd.setEnabled(true);
         txtSupplierName.setText("");
         txtPhoneNumber.setText("");
         txtAddress.setText("");
@@ -415,6 +416,7 @@ public class SupplierManagement_GUI extends javax.swing.JFrame
         // Display the information on the textfield
         if(row  < tblSupplierModel.getRowCount() && row  >= 0)
         {
+            btnAdd.setEnabled(false);
             txtSupplierName.setText(tblSupplier.getValueAt(row, 1).toString());
             cboServiceType.setSelectedItem(tblSupplier.getValueAt(row, 2).toString());
             String contractSingingDateString = tblSupplier.getValueAt(row, 3).toString();
